@@ -1,62 +1,30 @@
+const timeBtns = document.querySelectorAll(".time-btn");
 const container = document.querySelector(".activities-cards");
+let chosenTime = "daily";
 
-/*
-Porpus of the below obj is 
-to create key words used in 
-time frame (previous):
-<span class="activity-time-pre">Last ${timeFrame[chosenTime]}
-*/
 const timeFrame = {
   daily: "Day",
   weekly: "Week",
   monthly: "Month",
 };
 
-// the timeframe chosen by user
-let chosenTime = "daily";
+/** Fetch JSON data */
+async function getData() {
+  const response = await fetch("./data.json");
+  return response.json();
+}
 
-const timeBtns = document.querySelectorAll(".time-btn");
+/** Create a single activity card element */
+function createCard(item) {
+  const activitySlug = item.title.replace(" ", "-").toLowerCase();
 
-// update chosen timeframe clicking on every timeframe btn
-timeBtns.forEach((btn) => {
-  btn.addEventListener("click", async () => {
-    timeBtns.forEach((b) => {
-      // reset styling to default
-      b.setAttribute("aria-pressed", "false");
-    });
-
-    // change color of the btn text + good accessibility practice
-    btn.setAttribute("aria-pressed", "true");
-
-    chosenTime = btn.textContent.trim().toLowerCase();
-    // get data again based on the updated chosenTime
-    fetchData();
-  });
-});
-
-/* in this function:
-  data is fetched from db
-  card element is created to show activities 
-  card elements are appended to its container
-*/
-const fetchData = async () => {
-  await fetch("./data.json")
-    .then((response) => response.json())
-    .then((data) => {
-      // reset the container
-      container.innerHTML = "";
-
-      for (const item of data) {
-        // get the title in lowercase to use in class and src
-        const act = item.title.replace(" ", "-").toLowerCase();
-        // creating card element
-        const card = document.createElement("div");
-        // adding classlist to card
-        card.className = "activity-card";
-        // populating elements with child elements and contents
-        card.innerHTML = `
-            <div class="icon-wrapper ${act}">
-              <img src="./images/icon-${act}.svg" />
+  const card=document.createElement("div");
+  // adding classlist to card
+  card.className = "activity-card";
+  // populating elements with child elements and contents
+  card.innerHTML = `
+            <div class="icon-wrapper ${activitySlug}">
+              <img src="./images/icon-${activitySlug}.svg" />
             </div>
             <div class="info">
             <div class="header">
@@ -70,11 +38,42 @@ const fetchData = async () => {
             </div>
             `;
 
-        // appending card to its container
-        container.appendChild(card);
-      }
-    });
-};
+  return card;
+}
 
-// fetching data in reload and refresh
-fetchData();
+/**Render all cards in the container */
+function renderCards(data) {
+  container.innerHTML = ""; // clear old cards
+
+  const fragment = document.createDocumentFragment();
+
+  data.forEach((item) => {
+    fragment.appendChild(createCard(item));
+  });
+
+  container.appendChild(fragment);
+}
+
+/** Update the active button styling */
+function updateActiveButton(selectedBtn) {
+  timeBtns.forEach((btn) => btn.setAttribute("aria-pressed", "false"));
+  selectedBtn.setAttribute("aria-pressed", "true");
+}
+
+/** Fetch data and render UI */
+async function updateUI() {
+  const data = await getData();
+  renderCards(data);
+}
+
+/** Event listeners for buttons */
+timeBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    chosenTime = btn.textContent.trim().toLowerCase();
+    updateActiveButton(btn);
+    updateUI();
+  });
+});
+
+// Innitial load
+updateUI();
