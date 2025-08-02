@@ -10,12 +10,12 @@ body {
   font-family: "Rubik", sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  background-color: #0f1424; }
 
 .wrapper {
   width: 100%;
   min-height: 100vh;
-  background-color: #0f1424;
   padding: 3em 1em;
   display: grid;
   justify-items: center;
@@ -31,8 +31,7 @@ body {
   justify-content: flex-start;
   column-gap: 1em;
   padding: 1em 1.5em;
-  border-radius: 1.2em;
-  height: fit-content; }
+  border-radius: 1.2em; }
   .info-card .avatar {
     width: 4em;
     height: 4em;
@@ -49,7 +48,6 @@ body {
   border-radius: 1em;
   display: flex;
   flex-direction: column;
-  justify-items: space-between;
   width: 100%; }
   .time-stamp-card .btn-wrapper {
     display: flex;
@@ -69,19 +67,22 @@ body {
 
 .activities-cards {
   display: grid;
-  height: fit-content;
   width: 100%;
   gap: 1.5em; }
   .activities-cards .activity-card {
-    display: grid;
-    position: sticky; }
+    display: grid; }
   .activities-cards .icon-wrapper {
     display: flex;
-    justify-content: flex-end;
-    border-radius: 1em;
-    height: 4em; }
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    border-radius: 1.2em;
+    padding-block-end: 0; }
+    .activities-cards .icon-wrapper .activity-icon {
+      height: 2.5em;
+      width: 2.5em; }
     .activities-cards .icon-wrapper img {
-      margin-block-start: -0.8em; }
+      margin-block-start: -0.5em; }
   .activities-cards .icon-wrapper.work {
     background-color: #ff8c66; }
   .activities-cards .icon-wrapper.play {
@@ -95,7 +96,6 @@ body {
   .activities-cards .icon-wrapper.self-care {
     background-color: #f1c65b; }
   .activities-cards .info {
-    margin-block-start: -2em;
     background-color: #1c1f4a;
     padding: 1.5em;
     border-radius: 1em;
@@ -103,33 +103,31 @@ body {
     flex-direction: column;
     row-gap: 0.7em;
     color: #bdc1ff;
-    width: 100%; }
+    width: 100%;
+    height: 100%; }
     .activities-cards .info .header {
       display: flex;
       justify-content: space-between;
       align-items: center; }
     .activities-cards .info .body {
       display: flex;
-      justify-content: space-between;
-      align-items: center; }
+      justify-content: space-between; }
 
 @media (min-width: 45em) {
   .wrapper {
-    max-height: 35em;
     justify-content: center;
-    align-items: center;
-    grid-template-columns: 1fr 3fr; }
+    align-items: stretch;
+    grid-template-columns: 1fr 3fr;
+    max-height: 30em; }
 
-  .time-stamp-card {
-    height: 100%; }
-    .time-stamp-card .info-card {
-      flex-direction: column;
-      text-align: center;
-      flex-grow: 1; }
-    .time-stamp-card .btn-wrapper {
-      flex-direction: column;
-      justify-content: center;
-      row-gap: 2em; }
+  .time-stamp-card .info-card {
+    flex-direction: column;
+    text-align: center;
+    flex-grow: 1; }
+  .time-stamp-card .btn-wrapper {
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 2em; }
 
   .activities-cards {
     display: grid;
@@ -140,5 +138,11 @@ body {
     flex-direction: column;
     row-gap: 0.5em;
     align-items: flex-start; } }
+@media (min-width: 65em) {
+  .wrapper {
+    max-width: 80em; }
+
+  .activity-card .info .body {
+    flex-direction: row; } }
 
 /*# sourceMappingURL=style.css.map */

@@ -24,18 +24,18 @@ function createCard(item) {
   // populating elements with child elements and contents
   card.innerHTML = `
             <div class="icon-wrapper ${activitySlug}">
-              <img src="./images/icon-${activitySlug}.svg" />
-            </div>
-            <div class="info">
-            <div class="header">
-            <span class="activity-title">${item.title}</span>
-            <img src="/images/icon-ellipsis.svg" class="ellipsis-icon" />
-            </div>
-            <div class="body">
+              <img class="activity-icon" src="./images/icon-${activitySlug}.svg" />
+              <div class="info">
+              <div class="header">
+              <span class="activity-title">${item.title}</span>
+              <img src="/images/icon-ellipsis.svg" class="ellipsis-icon" />
+              </div>
+              <div class="body">
               <span class="activity-time-current"> ${item.timeframes[chosenTime]?.current}hrs</span>
               <span class="activity-time-pre">Last ${timeFrame[chosenTime]} - ${item.timeframes[chosenTime]?.previous}hrs</span>
-            </div>
-            </div>
+              </div>
+              </div>
+              </div>
             `;
 
   return card;
