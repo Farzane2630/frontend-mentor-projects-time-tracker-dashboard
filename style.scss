@@ -27,7 +27,7 @@ $Rubik: 'Rubik';
 
 body {
     min-height: 100vh;
-    font-size: 18px;
+    font-size: 1rem;
     font-family: $Rubik, sans-serif;
     display: flex;
     justify-content: center;
@@ -40,7 +40,6 @@ body {
     min-height: 100vh;
     padding: 3em 1em;
     display: grid;
-    justify-items: center;
     gap: 2em;
     color: $Navy-200;
     font-size: 1.2em;
