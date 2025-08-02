@@ -115,6 +115,7 @@ body {
 
 @media (min-width: 45em) {
   .wrapper {
+    max-width: 50em;
     align-items: stretch;
     grid-template-columns: 1fr 3fr;
     min-height: auto; }
@@ -138,9 +139,6 @@ body {
     row-gap: 0.5em;
     align-items: flex-start; } }
 @media (min-width: 65em) {
-  .wrapper {
-    max-width: 80em; }
-
   .activity-card .info .body {
     flex-direction: row; } }
 

@@ -112,7 +112,6 @@ body {
 
 
 // activities
-// todo: refactoring the activities-cards => like info card
 .activities-cards {
     display: grid;
     width: 100%;
@@ -193,10 +192,11 @@ body {
 // media
 @media (min-width: 45em) {
     .wrapper {
+        max-width: 50em;
         align-items: stretch;
         grid-template-columns: 1fr 3fr;
         min-height: auto;
-        
+
     }
 
     .time-stamp-card {
@@ -231,10 +231,6 @@ body {
 }
 
 @media (min-width: 65em) {
-    .wrapper {
-        max-width: 80em;
-    }
-
     .activity-card .info .body {
         flex-direction: row;
     }
