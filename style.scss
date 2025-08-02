@@ -26,6 +26,7 @@ $Rubik: 'Rubik';
 }
 
 body {
+    min-height: 100vh;
     font-size: 18px;
     font-family: $Rubik, sans-serif;
     display: flex;
@@ -127,8 +128,8 @@ body {
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-end;
-        border-radius: 1.2em;
-        padding-block-end: 0;
+        border-radius: 1em;
+        padding: 0;
 
         .activity-icon {
             height: 2.5em;
@@ -193,14 +194,13 @@ body {
 // media
 @media (min-width: 45em) {
     .wrapper {
-        justify-content: center;
         align-items: stretch;
         grid-template-columns: 1fr 3fr;
-        max-height: 30em;
+        min-height: auto;
+        
     }
 
     .time-stamp-card {
-
         .info-card {
             flex-direction: column;
             text-align: center;
