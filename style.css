@@ -16,12 +16,13 @@ body {
   width: 100%;
   min-height: 100vh;
   background-color: #0f1424;
-  padding: 6em 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  row-gap: 3em; }
+  padding: 3em 1em;
+  display: grid;
+  justify-items: center;
+  gap: 2em;
+  color: #bdc1ff;
+  font-size: 1.2em;
+  font-weight: 400; }
 
 .info-card {
   background-color: #5847eb;
@@ -31,11 +32,10 @@ body {
   column-gap: 1em;
   padding: 1em 1.5em;
   border-radius: 1.2em;
-  width: 20em;
-  margin-block-start: -11em; }
+  height: fit-content; }
   .info-card .avatar {
-    width: 5em;
-    height: 5em;
+    width: 4em;
+    height: 4em;
     border: #bdc1ff solid 0.2em;
     border-radius: 100%; }
   .info-card .text-wrapper :first-child {
@@ -47,9 +47,15 @@ body {
 .time-stamp-card {
   background-color: #1c1f4a;
   border-radius: 1em;
-  padding: 5em 1em 1.5em 1em;
   display: flex;
-  justify-content: space-between; }
+  flex-direction: column;
+  justify-items: space-between;
+  width: 100%; }
+  .time-stamp-card .btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5em 1em; }
   .time-stamp-card button {
     color: #bdc1ff;
     font-size: 1em;
@@ -64,8 +70,7 @@ body {
 .activities-cards {
   display: grid;
   height: fit-content;
-  width: 20em;
-  padding-block-start: 4em;
+  width: 100%;
   gap: 1.5em; }
   .activities-cards .activity-card {
     display: grid;
@@ -107,5 +112,33 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center; }
+
+@media (min-width: 45em) {
+  .wrapper {
+    max-height: 35em;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 3fr; }
+
+  .time-stamp-card {
+    height: 100%; }
+    .time-stamp-card .info-card {
+      flex-direction: column;
+      text-align: center;
+      flex-grow: 1; }
+    .time-stamp-card .btn-wrapper {
+      flex-direction: column;
+      justify-content: center;
+      row-gap: 2em; }
+
+  .activities-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%; }
+
+  .activity-card .info .body {
+    flex-direction: column;
+    row-gap: 0.5em;
+    align-items: flex-start; } }
 
 /*# sourceMappingURL=style.css.map */

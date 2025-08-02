@@ -18,7 +18,7 @@ async function getData() {
 function createCard(item) {
   const activitySlug = item.title.replace(" ", "-").toLowerCase();
 
-  const card=document.createElement("div");
+  const card = document.createElement("div");
   // adding classlist to card
   card.className = "activity-card";
   // populating elements with child elements and contents
