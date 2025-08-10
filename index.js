@@ -28,7 +28,7 @@ function createCard(item) {
               <div class="info">
               <div class="header">
               <span class="activity-title">${item.title}</span>
-              <img src="/images/icon-ellipsis.svg" class="ellipsis-icon" />
+              <img src="/images/icon-ellipsis.svg" class="ellipsis-icon" alt="${activitySlug}-icon" />
               </div>
               <div class="body">
               <span class="activity-time-current"> ${item.timeframes[chosenTime]?.current}hrs</span>
