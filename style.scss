@@ -1,22 +1,35 @@
-// ## Colors
-// ### Primary
-$Primary-Purple: hsl(246, 80%, 60%);
-$Work: hsl(15, 100%, 70%);
-$Play: hsl(195, 74%, 62%);
-$Study: hsl(348, 100%, 68%);
-$Exercise: hsl(145, 58%, 55%);
-$Social: hsl(264, 64%, 52%);
-$Self-Care: hsl(43, 84%, 65%);
-// ### Neutral
-$Navy-950: hsl(226, 43%, 10%);
-$Navy-900: hsl(235, 46%, 20%);
-$Purple-500: hsl(235, 45%, 61%);
-$Navy-200: hsl(236, 100%, 87%);
+// ==========================
+// 🎨 Colors
+// ==========================
+$colors: (
+    Primary-Purple: hsl(246, 80%, 60%),
+    work: hsl(15, 100%, 70%),
+    play: hsl(195, 74%, 62%),
+    study: hsl(348, 100%, 68%),
+    exercise: hsl(145, 58%, 55%),
+    social: hsl(264, 64%, 52%),
+    self-care: hsl(43, 84%, 65%),
+    Navy-950: hsl(226, 43%, 10%),
+    Navy-900: hsl(235, 46%, 20%),
+    Purple-500: hsl(235, 45%, 61%),
+    Navy-200: hsl(236, 100%, 87%),
+);
 
-// ## Typography
-// font-family
-$Rubik: 'Rubik';
+@function color($name) {
+    @return map-get($colors, $name)
+}
 
+;
+
+// ==========================
+// ✍ Typography
+// ==========================
+$font-family-base: 'Rubik', sans-serif;
+$font-size-base: 18px;
+
+// ==========================
+// 🔧 Global Reset & Base Styles
+// ==========================
 *,
 *::after,
 *::before {
@@ -27,30 +40,44 @@ $Rubik: 'Rubik';
 
 body {
     min-height: 100vh;
-    font-size: 1rem;
-    font-family: $Rubik, sans-serif;
+    font-size: $font-size-base;
+    font-family: $font-family-base;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $Navy-950;
+    background-color: color(Navy-950);
+    color: color(Navy-200);
 }
 
+
+// ==========================
+// 🏗 Layout
+// ==========================
 .wrapper {
     width: 100%;
     min-height: 100vh;
     padding: 3em 1em;
     display: grid;
     gap: 2em;
-    color: $Navy-200;
     font-size: 1.2em;
     font-weight: 400;
 
+    @media (min-width: 45em) {
+        max-width: 50em;
+        align-items: stretch;
+        grid-template-columns: 1fr 3fr;
+        min-height: auto;
+    }
 }
 
+;
 
-// profile
+
+// ==========================
+// 👤 Profile Card
+// ==========================
 .info-card {
-    background-color: $Primary-Purple;
+    background-color: color(Primary-Purple);
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -61,25 +88,33 @@ body {
     .avatar {
         width: 4em;
         height: 4em;
-        border: $Navy-200 solid 0.2em;
-        border-radius: 100%;
+        border: color(Navy-200) solid 0.2em;
+        border-radius: 50%;
     }
 
     .text-wrapper {
         :first-child {
-            color: $Purple-500;
+            color: color(Purple-500);
             font-size: 0.9em;
         }
 
         :last-child {
-            color: $Navy-200;
+            color: color(Navy-200);
         }
+    }
+
+    @media (min-width: 45em) {
+        flex-direction: column;
+        text-align: center;
+        flex-grow: 1;
     }
 }
 
-// time frames
+// ==========================
+// ⏱ Time Stamp Card
+// ==========================
 .time-stamp-card {
-    background-color: $Navy-900;
+    background-color: color(Navy-900);
     border-radius: 1em;
     display: flex;
     flex-direction: column;
@@ -90,148 +125,102 @@ body {
         justify-content: space-between;
         align-items: center;
         padding: 1.5em 1em;
-    }
 
-    button {
-        color: $Navy-200;
-        font-size: 1em;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-
-        &:hover {
-            color: $Purple-500;
-        }
-    }
-
-    .time-btn[aria-pressed="true"] {
-        color: $Purple-500;
-    }
-}
-
-
-
-// activities
-.activities-cards {
-    display: grid;
-    width: 100%;
-    gap: 1.5em;
-
-    .activity-card {
-        display: grid;
-    }
-
-    .icon-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-end;
-        border-radius: 1em;
-        padding: 0;
-
-        .activity-icon {
-            height: 2.5em;
-            width: 2.5em;
-        }
-
-        img {
-            margin-block-start: -0.5em;
-        }
-    }
-
-    .icon-wrapper.work {
-        background-color: $Work;
-    }
-
-    .icon-wrapper.play {
-        background-color: $Play;
-    }
-
-    .icon-wrapper.study {
-        background-color: $Study;
-    }
-
-    .icon-wrapper.exercise {
-        background-color: $Exercise;
-    }
-
-    .icon-wrapper.social {
-        background-color: $Social;
-    }
-
-    .icon-wrapper.self-care {
-        background-color: $Self-Care;
-    }
-
-    .info {
-        background-color: $Navy-900;
-        padding: 1.5em;
-        border-radius: 1em;
-        display: flex;
-        flex-direction: column;
-        row-gap: 0.7em;
-        color: $Navy-200;
-        width: 100%;
-        height: 100%;
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .body {
-            display: flex;
-            justify-content: space-between;
-        }
-
-    }
-}
-
-
-// media
-@media (min-width: 45em) {
-    .wrapper {
-        max-width: 50em;
-        align-items: stretch;
-        grid-template-columns: 1fr 3fr;
-        min-height: auto;
-
-    }
-
-    .time-stamp-card {
-        .info-card {
-            flex-direction: column;
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        .btn-wrapper {
+        @media (min-width: 45em) {
             flex-direction: column;
             justify-content: center;
             row-gap: 2em;
         }
     }
 
-    .activities-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        width: 100%;
-    }
+    button {
+        color: color(Navy-200);
+        font-size: 1em;
+        background: none;
+        border: none;
+        cursor: pointer;
 
-    .activity-card {
-        .info {
-            .body {
-                flex-direction: column;
-                row-gap: 0.5em;
-                align-items: flex-start;
-            }
+        &:hover {
+            color: color(Purple-500);
+        }
+
+        &[aria-pressed="true"] {
+            color: color(Purple-500);
         }
     }
 }
 
-@media (min-width: 65em) {
-    .activity-card .info .body {
-        flex-direction: row;
+
+// ==========================
+// 🎯 Activity Cards
+// ==========================
+.activities-cards {
+    display: grid;
+    width: 100%;
+    gap: 1.5em;
+
+    @media (min-width: 45em) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .activity-card {
+        display: grid;
+
+        .icon-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-end;
+            border-radius: 1em;
+            padding: 0;
+
+            .activity-icon {
+                height: 2.5em;
+                width: 2.5em;
+            }
+
+            img {
+                margin-block-start: -0.5em;
+            }
+
+            // ✅ Dynamically assign colors via loop
+            @each $activity, $color in (work, play, study, exercise, social, self-care) {
+                &.#{$activity} {
+                    background-color: color($activity);
+                }
+            }
+        }
+
+        .info {
+            background-color: color(Navy-900);
+            padding: 1.5em;
+            border-radius: 1em;
+            display: flex;
+            flex-direction: column;
+            row-gap: 0.7em;
+            color: color(Navy-200);
+            width: 100%;
+            height: 100%;
+
+            .header,
+            .body {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .body {
+                @media (min-width: 45em) {
+                    flex-direction: column;
+                    row-gap: 0.5em;
+                    align-items: flex-start;
+                }
+
+                @media (min-width: 65em) {
+                    flex-direction: row;
+
+                }
+            }
+        }
     }
 }

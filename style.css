@@ -7,12 +7,13 @@
 
 body {
   min-height: 100vh;
-  font-size: 1rem;
+  font-size: 18px;
   font-family: "Rubik", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0f1424; }
+  background-color: #0f1424;
+  color: #bdc1ff; }
 
 .wrapper {
   width: 100%;
@@ -20,9 +21,14 @@ body {
   padding: 3em 1em;
   display: grid;
   gap: 2em;
-  color: #bdc1ff;
   font-size: 1.2em;
   font-weight: 400; }
+  @media (min-width: 45em) {
+    .wrapper {
+      max-width: 50em;
+      align-items: stretch;
+      grid-template-columns: 1fr 3fr;
+      min-height: auto; } }
 
 .info-card {
   background-color: #5847eb;
@@ -36,12 +42,17 @@ body {
     width: 4em;
     height: 4em;
     border: #bdc1ff solid 0.2em;
-    border-radius: 100%; }
+    border-radius: 50%; }
   .info-card .text-wrapper :first-child {
     color: #6f76c8;
     font-size: 0.9em; }
   .info-card .text-wrapper :last-child {
     color: #bdc1ff; }
+  @media (min-width: 45em) {
+    .info-card {
+      flex-direction: column;
+      text-align: center;
+      flex-grow: 1; } }
 
 .time-stamp-card {
   background-color: #1c1f4a;
@@ -54,92 +65,77 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1.5em 1em; }
+    @media (min-width: 45em) {
+      .time-stamp-card .btn-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 2em; } }
   .time-stamp-card button {
     color: #bdc1ff;
     font-size: 1em;
-    background-color: transparent;
+    background: none;
     border: none;
     cursor: pointer; }
     .time-stamp-card button:hover {
       color: #6f76c8; }
-  .time-stamp-card .time-btn[aria-pressed="true"] {
-    color: #6f76c8; }
+    .time-stamp-card button[aria-pressed="true"] {
+      color: #6f76c8; }
 
 .activities-cards {
   display: grid;
   width: 100%;
   gap: 1.5em; }
+  @media (min-width: 45em) {
+    .activities-cards {
+      grid-template-columns: repeat(3, 1fr); } }
   .activities-cards .activity-card {
     display: grid; }
-  .activities-cards .icon-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-    border-radius: 1em;
-    padding: 0; }
-    .activities-cards .icon-wrapper .activity-icon {
-      height: 2.5em;
-      width: 2.5em; }
-    .activities-cards .icon-wrapper img {
-      margin-block-start: -0.5em; }
-  .activities-cards .icon-wrapper.work {
-    background-color: #ff8c66; }
-  .activities-cards .icon-wrapper.play {
-    background-color: #56c2e6; }
-  .activities-cards .icon-wrapper.study {
-    background-color: #ff5c7c; }
-  .activities-cards .icon-wrapper.exercise {
-    background-color: #4acf81; }
-  .activities-cards .icon-wrapper.social {
-    background-color: #7536d3; }
-  .activities-cards .icon-wrapper.self-care {
-    background-color: #f1c65b; }
-  .activities-cards .info {
-    background-color: #1c1f4a;
-    padding: 1.5em;
-    border-radius: 1em;
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.7em;
-    color: #bdc1ff;
-    width: 100%;
-    height: 100%; }
-    .activities-cards .info .header {
+    .activities-cards .activity-card .icon-wrapper {
       display: flex;
-      justify-content: space-between;
-      align-items: center; }
-    .activities-cards .info .body {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-end;
+      border-radius: 1em;
+      padding: 0; }
+      .activities-cards .activity-card .icon-wrapper .activity-icon {
+        height: 2.5em;
+        width: 2.5em; }
+      .activities-cards .activity-card .icon-wrapper img {
+        margin-block-start: -0.5em; }
+      .activities-cards .activity-card .icon-wrapper.work {
+        background-color: #ff8c66; }
+      .activities-cards .activity-card .icon-wrapper.play {
+        background-color: #56c2e6; }
+      .activities-cards .activity-card .icon-wrapper.study {
+        background-color: #ff5c7c; }
+      .activities-cards .activity-card .icon-wrapper.exercise {
+        background-color: #4acf81; }
+      .activities-cards .activity-card .icon-wrapper.social {
+        background-color: #7536d3; }
+      .activities-cards .activity-card .icon-wrapper.self-care {
+        background-color: #f1c65b; }
+    .activities-cards .activity-card .info {
+      background-color: #1c1f4a;
+      padding: 1.5em;
+      border-radius: 1em;
       display: flex;
-      justify-content: space-between; }
-
-@media (min-width: 45em) {
-  .wrapper {
-    max-width: 50em;
-    align-items: stretch;
-    grid-template-columns: 1fr 3fr;
-    min-height: auto; }
-
-  .time-stamp-card .info-card {
-    flex-direction: column;
-    text-align: center;
-    flex-grow: 1; }
-  .time-stamp-card .btn-wrapper {
-    flex-direction: column;
-    justify-content: center;
-    row-gap: 2em; }
-
-  .activities-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    width: 100%; }
-
-  .activity-card .info .body {
-    flex-direction: column;
-    row-gap: 0.5em;
-    align-items: flex-start; } }
-@media (min-width: 65em) {
-  .activity-card .info .body {
-    flex-direction: row; } }
+      flex-direction: column;
+      row-gap: 0.7em;
+      color: #bdc1ff;
+      width: 100%;
+      height: 100%; }
+      .activities-cards .activity-card .info .header,
+      .activities-cards .activity-card .info .body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+      @media (min-width: 45em) {
+        .activities-cards .activity-card .info .body {
+          flex-direction: column;
+          row-gap: 0.5em;
+          align-items: flex-start; } }
+      @media (min-width: 65em) {
+        .activities-cards .activity-card .info .body {
+          flex-direction: row; } }
 
 /*# sourceMappingURL=style.css.map */
