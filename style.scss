@@ -173,14 +173,20 @@ body {
             align-items: flex-end;
             border-radius: 1em;
             padding: 0;
+            overflow: hidden;
 
             .activity-icon {
-                height: 2.5em;
-                width: 2.5em;
+                height: 4em;
+                width: 4em;
             }
-
+            
             img {
-                margin-block-start: -0.5em;
+                margin-block: -1em;
+                margin-inline-end: 0.5em;
+                
+            }
+            .exercise {
+               height: 6em;
             }
 
             // ✅ Dynamically assign colors via loop

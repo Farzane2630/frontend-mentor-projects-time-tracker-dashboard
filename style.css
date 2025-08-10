@@ -96,12 +96,16 @@ body {
       justify-content: flex-start;
       align-items: flex-end;
       border-radius: 1em;
-      padding: 0; }
+      padding: 0;
+      overflow: hidden; }
       .activities-cards .activity-card .icon-wrapper .activity-icon {
-        height: 2.5em;
-        width: 2.5em; }
+        height: 4em;
+        width: 4em; }
       .activities-cards .activity-card .icon-wrapper img {
-        margin-block-start: -0.5em; }
+        margin-block: -1em;
+        margin-inline-end: 0.5em; }
+      .activities-cards .activity-card .icon-wrapper .exercise {
+        height: 6em; }
       .activities-cards .activity-card .icon-wrapper.work {
         background-color: #ff8c66; }
       .activities-cards .activity-card .icon-wrapper.play {

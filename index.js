@@ -24,11 +24,11 @@ function createCard(item) {
   // populating elements with child elements and contents
   card.innerHTML = `
             <div class="icon-wrapper ${activitySlug}">
-              <img class="activity-icon" src="./images/icon-${activitySlug}.svg" />
+              <img class="activity-icon ${activitySlug}" src="./images/icon-${activitySlug}.svg" alt="${activitySlug}-icon" />
               <div class="info">
               <div class="header">
               <span class="activity-title">${item.title}</span>
-              <img src="/images/icon-ellipsis.svg" class="ellipsis-icon" alt="${activitySlug}-icon" />
+              <img src="/images/icon-ellipsis.svg" class="ellipsis-icon" alt="ellipsis-icon" />
               </div>
               <div class="body">
               <span class="activity-time-current"> ${item.timeframes[chosenTime]?.current}hrs</span>
